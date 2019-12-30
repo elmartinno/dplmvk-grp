@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package com.grpc.getAccountsClasses;
+
+
+message BalanceGRpc{
+    string value = 1;
+    string precision = 2;
+    string currency =3;
+}
+message AccountGRpc{
+    string id = 1;
+    string created =2;
+    string update =3;
+    string iban = 4;
+    BalanceGRpc balance = 5;
+    string published = 6;
+    string hidden =7;
+}
+
+//message getAccountResponse {
+//     AccountGRpc accounts = 1;
+//}
+
+message getAccountRequest {
+}
+
+service GRPCaccount {
+    rpc getAccounts (getAccountRequest) returns (AccountGRpc);
+}
